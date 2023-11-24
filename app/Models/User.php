@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'login',
         'email',
         'password',
     ];
@@ -42,4 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Балансы пользователя
+     * @return unknown
+     */
+    public function balances()
+    {
+        return $this->hasMany(UserBalance::class);
+    }
 }
