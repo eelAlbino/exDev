@@ -20,8 +20,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $uniqueLogin = Str::replaceLast('.', '', fake()->unique()->userName());
         return [
             'name' => fake()->name(),
+            'login' => $uniqueLogin,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
